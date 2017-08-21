@@ -4,12 +4,10 @@ do {
     $file = Read-Host -Prompt 'Script file path'
     $time = Read-Host -Prompt 'Script execution time'
     $name = Read-Host -Prompt 'Scheduled task name'
-    $credentials = Get-Credential
 
-    $Action = New-ScheduledTaskAction -Execute $utility -Argument "-NonInteractive -NoLogo -NoProfile -File $file"
-    $Trigger = New-ScheduledTaskTrigger -Daily -At $time
-    $Task = New-ScheduledTask -Action $Action -Trigger $Trigger -Settings (New-ScheduledTaskSettingsSet)
-    $Task | Register-ScheduledTask -TaskName $name -User $credentials.username -Password $credentials.password
+    $action = New-ScheduledTaskAction -Execute $utility -Argument "-NonInteractive -NoLogo -NoProfile -File $file"
+    $trigger = New-ScheduledTaskTrigger -Daily -At $time
+    Register-ScheduledTask -Action $action  -Trigger $trigger -TaskName $name -User 'System' -RunLevel Highest
 
     $continue = Read-Host -Prompt 'Would you like to add another task? (y/n)'
 } while ($continue -eq 'y')
