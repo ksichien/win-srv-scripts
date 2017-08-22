@@ -9,15 +9,18 @@ $password = ConvertTo-SecureString -String 'P@ssword!'
 do {
     Write-Output 'Please provide the following information for the new user:'
     $firstname = Read-Host -Prompt 'First name'
+    $firstname = $firstname.SubString(0,1).ToUpper() + $firstname.SubString(1).ToLower()
     $lastname = Read-Host -Prompt 'Last name'
+    $lastname = $lastname.SubString(0,1).ToUpper() + $lastname.SubString(1).ToLower()
     $department = Read-Host -Prompt 'Department'
+    $department = $department.ToLower()
 
     $username = $firstname.ToLower().Substring(0,1) + $lastname.ToLower()
     $path = "OU=$department,OU=$city,OU=$country,OU=$continent,OU=users,OU=$company,$domain"
     $identity = "CN=$firstname $lastname,$path"
 
     Write-Output "Creating user $firstname $lastname as $username in $department, located in $path."
-    $confirm = Read-Host -Prompt "Continue? (y/n)"
+    $confirm = Read-Host -Prompt 'Continue? (y/n)'
 
     if($confirm -eq 'y') {
         New-ADUser -DisplayName:"$firstname $lastname" -GivenName:"$firstname" -Name:"$firstname $lastname" -Path:$path -SamAccountName:$username -Server:$server -Surname:"$lastname" -Type:'user' -UserPrincipalName:"$username@$company"
