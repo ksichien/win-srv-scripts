@@ -6,8 +6,8 @@ $vhdpath = "C:\Hyper-V Disks\$($vm).vhdx"
 $vhdsize = 40GB
 
 Import-Module Hyper-V
-$adapter = Get-NetAdapter -Physical | where {$_.Status -eq "Up"} | sort ASC | select Name
-New-VMSwitch -Name $vmswitch -NetAdapterName $adapter[0] -AllowManagementOS $true
+$adapters = Get-NetAdapter -Physical | where {$_.Status -eq "Up"} | sort Name
+New-VMSwitch -Name $vmswitch -NetAdapterName $adapters[0].Name -AllowManagementOS $true
 New-VM -Name $vm -Path $vmpath -MemoryStartupBytes $vmmemory -SwitchName $vmswitch -NewVHDPath $vhdpath -NewVHDSizeBytes $vhdsize
 Set-VMProcessor $vm -Count 2
 Set-VMMemory $vm -DynamicMemoryEnabled $true
