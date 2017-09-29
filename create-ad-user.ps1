@@ -1,6 +1,7 @@
 Import-Module ActiveDirectory
 $server = 'dc1.internal.example.com'
 $domain = 'DC=internal,DC=example,DC=com'
+$upnsuffix = 'company.com'
 $company = 'company'
 $continent = 'europe'
 $country = 'germany'
@@ -23,7 +24,7 @@ do {
     $confirm = Read-Host -Prompt 'Continue? (y/n)'
 
     if($confirm -eq 'y') {
-        New-ADUser -DisplayName:"$firstname $lastname" -GivenName:"$firstname" -Name:"$firstname $lastname" -Path:$path -SamAccountName:$username -Server:$server -Surname:"$lastname" -Type:'user' -UserPrincipalName:"$username@$company"
+        New-ADUser -DisplayName:"$firstname $lastname" -GivenName:"$firstname" -Name:"$firstname $lastname" -Path:$path -SamAccountName:$username -Server:$server -Surname:"$lastname" -Type:'user' -UserPrincipalName:"$username@$upnsuffix"
         Set-ADAccountPassword -Identity:$identity -NewPassword:$password -Reset:$true -Server:$server
         Enable-ADAccount -Identity:$identity -Server:$server
         Add-ADPrincipalGroupMembership -Identity:$identity -MemberOf:"CN=$department,OU=groups,OU=$company,$domain" -Server:$server
