@@ -1,4 +1,4 @@
-$location = Read-Host -Prompt 'Please enter the searchbase' # f.e. ou=Computers,DC=example,DC=com
+$location = Read-Host -Prompt 'Please enter the searchbase' # f.e. ou=computers,ou=example,DC=internal,DC=example,DC=com
 $computercollection = Get-ADComputer -Filter * -SearchBase "$location"
 
 foreach($computer in $computercollection) {
