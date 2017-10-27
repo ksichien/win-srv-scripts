@@ -1,10 +1,10 @@
-$srv = 'wsus.internal.example.com'
+$srv = 'wsus.internal.vandelayindustries.com'
 $svc = 'windows server update services'
-$from = 'daily-wsus-report@example.com'
-$to = 'user@example.com'
+$from = 'daily-wsus-report@vandelayindustries.com'
+$to = 'user@vandelayindustries.com'
 $subject = 'Daily WSUS Report'
 $body = ''
-$smtpserver = 'smtp.example.com'
+$smtpserver = 'smtp.vandelayindustries.com'
 $smtpport = '587'
 $securepassword = ConvertTo-SecureString 'P@ssword!' -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential ('daily-wsus-report', $securepassword)

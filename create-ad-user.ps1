@@ -1,8 +1,8 @@
 Import-Module ActiveDirectory
-$server = 'dc1.internal.example.com'
-$domain = 'DC=internal,DC=example,DC=com'
-$upnsuffix = 'example.com'
-$company = 'example'
+$server = 'dc1.internal.vandelayindustries.com'
+$domain = 'DC=internal,DC=vandelayindustries,DC=com'
+$upnsuffix = 'vandelayindustries.com'
+$company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
 $city = 'berlin'
