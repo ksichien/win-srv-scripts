@@ -6,7 +6,7 @@ $company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
 $city = 'berlin'
-$password = ConvertTo-SecureString -String 'P@ssword!'
+$password = ConvertTo-SecureString 'P@ssword!' -AsPlainText -Force
 do {
     Write-Output 'Please provide the following information for the new user:'
     $firstname = Read-Host -Prompt 'First name'
