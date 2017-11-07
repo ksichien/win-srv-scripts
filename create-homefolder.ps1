@@ -1,7 +1,7 @@
 Import-Module ActiveDirectory
 $server = 'dc1.internal.vandelayindustries.com'
 $domain = 'DC=internal,DC=vandelayindustries,DC=com'
-$upnsuffix = 'vandelayindustries.com'
+$dfs = '\\internal.vandelayindustries.com\shares'
 $company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
@@ -14,7 +14,7 @@ foreach ($d in $departments) {
     $users = get-aduser -filter * -searchbase $ou -server $server
     foreach ($u in $users) {
         $username = $u.samAccountName
-        $homedirectory = "\\internal.vandelayindustries.com\shares\home\$username"
+        $homedirectory = "$dfs\home\$username"
         new-item $homedirectory -type directory
         $acl = get-acl $homedirectory
         $ar = new-object System.Security.AccessControl.FileSystemAccessRule($username, 'Modify', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
