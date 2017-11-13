@@ -15,11 +15,13 @@ foreach ($d in $departments) {
     foreach ($u in $users) {
         $username = $u.samAccountName
         $homedirectory = "$dfs\home\$username"
-        new-item $homedirectory -type directory
-        $acl = get-acl $homedirectory
-        $ar = new-object System.Security.AccessControl.FileSystemAccessRule($username, 'Modify', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
-        $acl.setaccessrule($ar)
-        set-acl $homedirectory $acl
-        set-aduser -identity $u -replace @{HomeDirectory="$homedirectory";HomeDrive="$homedrive"}
+        if (-not(test-path -path "$homedirectory")) {
+            new-item $homedirectory -type directory
+            $acl = get-acl $homedirectory
+            $ar = new-object System.Security.AccessControl.FileSystemAccessRule($username, 'Modify', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
+            $acl.setaccessrule($ar)
+            set-acl $homedirectory $acl
+            set-aduser -identity $u -replace @{HomeDirectory="$homedirectory";HomeDrive="$homedrive"}
+        }
     }
 }
