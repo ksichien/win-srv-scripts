@@ -21,7 +21,7 @@ foreach ($d in $departments) {
             $ar = new-object System.Security.AccessControl.FileSystemAccessRule($username, 'Modify', 'ContainerInherit,ObjectInherit', 'None', 'Allow')
             $acl.setaccessrule($ar)
             set-acl $homedirectory $acl
-            set-aduser -identity $u -replace @{HomeDirectory="$homedirectory";HomeDrive="$homedrive"}
         }
+        set-aduser -identity $u -replace @{HomeDirectory="$homedirectory";HomeDrive="$homedrive"}
     }
 }
