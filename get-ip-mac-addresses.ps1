@@ -1,4 +1,5 @@
-$location = Read-Host -Prompt 'Please enter the searchbase' # f.e. ou=computers,ou=vandelayindustries,DC=internal,DC=vandelayindustries,DC=com
+Import-Module ActiveDirectory
+$location = Read-Host -Prompt 'Please enter the searchbase' # f.e. OU=computers,OU=vandelayindustries,DC=internal,DC=vandelayindustries,DC=com
 $computercollection = Get-ADComputer -Filter * -SearchBase "$location"
 
 foreach($computer in $computercollection) {

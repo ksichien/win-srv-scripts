@@ -6,7 +6,7 @@ $company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
 $city = 'berlin'
-$departments = @('finance')
+$departments = @('finance','logistics')
 $homedrive = 'U:'
 
 foreach ($d in $departments) {
