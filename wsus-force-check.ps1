@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 # Microsoft has deprecated wuauclt for Windows 10 & Windows Server 2016.
 # Instead, usoclient should now be used to report client status to the WSUS server.
 # The binary is located in C:\Windows\System32\UsoClient.exe

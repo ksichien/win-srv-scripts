@@ -1,4 +1,6 @@
+#!/usr/bin/env pwsh
 Import-Module ActiveDirectory
+
 $server = 'dc1.internal.vandelayindustries.com'
 $domain = 'DC=internal,DC=vandelayindustries,DC=com'
 $upnsuffix = 'vandelayindustries.com'
@@ -6,7 +8,7 @@ $company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
 $city = 'berlin'
-$departments = @('finance','logistics')
+$departments = @('finance', 'logistics')
 
 foreach ($department in $departments) {
     $ou = "OU=$department,OU=$city,ou=$country,OU=$continent,OU=users,OU=$company,$domain"
@@ -14,6 +16,6 @@ foreach ($department in $departments) {
     foreach ($user in $users) {
         $username = $user.samaccountname
         $upn = "$username@$upnsuffix"
-        set-aduser -identity $user -replace @{UserPrincipalName=$upn}
+        set-aduser -identity $user -replace @{UserPrincipalName = $upn}
     }
 }

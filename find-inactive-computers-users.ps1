@@ -1,4 +1,6 @@
+#!/usr/bin/env pwsh
 Import-Module ActiveDirectory
+
 $datecutoff = (Get-Date).AddDays(-90)
 $domain = "DC=internal,DC=vandelayindustries,DC=com"
 $company = 'vandelayindustries'

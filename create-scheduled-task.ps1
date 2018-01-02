@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 $utility = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
 
 function create-scheduled-task ([string]$path, [string]$time, [string]$name) {

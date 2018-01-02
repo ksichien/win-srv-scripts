@@ -1,3 +1,4 @@
+#!/usr/bin/env pwsh
 $srv = 'wsus.internal.vandelayindustries.com'
 $svc = 'windows server update services'
 $from = 'daily-wsus-report@vandelayindustries.com'

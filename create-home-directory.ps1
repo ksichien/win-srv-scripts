@@ -1,4 +1,6 @@
+#!/usr/bin/env pwsh
 Import-Module ActiveDirectory
+
 $server = 'dc1.internal.vandelayindustries.com'
 $domain = 'DC=internal,DC=vandelayindustries,DC=com'
 $dfs = '\\internal.vandelayindustries.com\shares'
@@ -6,7 +8,7 @@ $company = 'vandelayindustries'
 $continent = 'europe'
 $country = 'germany'
 $city = 'berlin'
-$departments = @('finance','logistics')
+$departments = @('finance', 'logistics')
 $homedrive = 'U:'
 
 foreach ($d in $departments) {
@@ -22,6 +24,6 @@ foreach ($d in $departments) {
             $acl.setaccessrule($ar)
             set-acl $homedirectory $acl
         }
-        set-aduser -identity $u -replace @{HomeDirectory="$homedirectory";HomeDrive="$homedrive"}
+        set-aduser -identity $u -replace @{HomeDirectory = "$homedirectory"; HomeDrive = "$homedrive"}
     }
 }

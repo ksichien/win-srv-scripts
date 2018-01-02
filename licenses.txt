@@ -1,0 +1,2 @@
+de-hq-pc386;aaaaa-bbbbb-ccccc-ddddd-eeeee
+de-hq-pc686;eeeee-ddddd-ccccc-bbbbb-aaaaa

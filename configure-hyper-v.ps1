@@ -1,4 +1,6 @@
+#!/usr/bin/env pwsh
 Import-Module Hyper-V
+
 $vmswitch = "ExternalVmSwitch"
 $vm = "CentOS 7 x64"
 $vmpath = "C:\Hyper-V Machines\"
