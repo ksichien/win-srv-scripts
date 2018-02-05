@@ -1,18 +1,18 @@
 #!/usr/bin/env pwsh
 # this script requires use of the powershell module Posh-SSH (https://github.com/darkoperator/Posh-SSH)
 
-$sqlserver = "mssql.internal.vandelayindustries.com"
-$sqldb = "sqlexpress"
-$sqlusername = "sa"
-$securesqlstring = "P@ssword!"
+$sqlserver = 'mssql.internal.vandelayindustries.com'
+$sqldb = 'sqlexpress'
+$sqlusername = 'sa'
+$securesqlstring = 'P@ssword!'
 
-$localdb = "C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup\sqlexpress.bak"
-$transferdb = "C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup\sqlexpress-" + $(get-date -f yyyy-MM-dd) + "-full.bak"
+$localdb = 'C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup\sqlexpress.bak'
+$transferdb = 'C:\Program Files (x86)\Microsoft SQL Server\MSSQL12.MSSQLSERVER\MSSQL\Backup\sqlexpress-' + $(get-date -f yyyy-MM-dd) + '-full.bak'
 
-$stfpserver = "backup.internal.vandelayindustries.com"
-$sftpusername = "backup.user"
-$securesftpstring = "P@ssword!"
-$remotepath = "/sqlexpress/"
+$stfpserver = 'backup.internal.vandelayindustries.com'
+$sftpusername = 'backup.user'
+$securesftpstring = 'P@ssword!'
+$remotepath = '/sqlexpress/'
 
 # create backup of sql database
 $securesqlpassword = convertto-securestring $securesqlstring -AsPlainText -force
