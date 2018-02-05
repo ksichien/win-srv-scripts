@@ -1,6 +1,6 @@
 #!/usr/bin/env pwsh
 # this script requires use of the powershell module Posh-SSH (https://github.com/darkoperator/Posh-SSH)
-# variables
+
 $sqlserver = "mssql.internal.vandelayindustries.com"
 $sqldb = "sqlexpress"
 $sqlusername = "sa"

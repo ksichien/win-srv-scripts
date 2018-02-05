@@ -1,7 +1,7 @@
 #!/usr/bin/env pwsh
 Import-Module ActiveDirectory
 
-function get-addresses ([string]$searchbase) {
+function find-conn-info ([string]$searchbase) {
     $computercollection = Get-ADComputer -Filter * -SearchBase "$searchbase"
 
     foreach ($computer in $computercollection) {
@@ -13,4 +13,6 @@ function get-addresses ([string]$searchbase) {
     }
 }
 
-get-addresses ('OU=computers,OU=vandelayindustries,DC=internal,DC=vandelayindustries,DC=com')
+$example_search_base = 'OU=computers,OU=vandelayindustries,DC=internal,DC=vandelayindustries,DC=com'
+
+find-conn-info $example_search_base

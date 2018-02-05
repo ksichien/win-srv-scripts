@@ -1,9 +1,10 @@
 #!/usr/bin/env pwsh
-$utility = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
 
 function create-scheduled-task ([string]$path, [string]$time, [string]$name) {
+    $utility = 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
     $action = New-ScheduledTaskAction -Execute $utility -Argument "-NonInteractive -NoLogo -NoProfile -File $file"
     $trigger = New-ScheduledTaskTrigger -Daily -At $time
+
     Register-ScheduledTask -Action $action  -Trigger $trigger -TaskName $name -User 'System' -RunLevel Highest
 }
 

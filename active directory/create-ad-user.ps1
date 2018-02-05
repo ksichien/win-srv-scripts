@@ -1,16 +1,17 @@
 #!/usr/bin/env pwsh
 Import-Module ActiveDirectory
 
-$server = 'dc1.internal.vandelayindustries.com'
-$domain = 'DC=internal,DC=vandelayindustries,DC=com'
-$upnsuffix = 'vandelayindustries.com'
-$company = 'vandelayindustries'
-$continent = 'europe'
-$country = 'germany'
-$city = 'berlin'
-$password = ConvertTo-SecureString 'P@ssword!' -AsPlainText -Force
-
 function create-ad-user ([string]$firstname, [string]$lastname, [string]$department) {
+    $server = 'dc1.internal.vandelayindustries.com'
+    $domain = 'DC=internal,DC=vandelayindustries,DC=com'
+    $upnsuffix = 'vandelayindustries.com'
+    $company = 'vandelayindustries'
+    $continent = 'europe'
+    $country = 'germany'
+    $city = 'berlin'
+    
+    $password = ConvertTo-SecureString 'P@ssword!' -AsPlainText -Force
+
     $username = $firstname.ToLower().Substring(0, 1) + $lastname.ToLower()
     $path = "OU=$department,OU=$city,OU=$country,OU=$continent,OU=users,OU=$company,$domain"
     $identity = "CN=$firstname $lastname,$path"
