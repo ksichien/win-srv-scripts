@@ -8,8 +8,8 @@ function format-disk ([string]$diskpart, [string]$drive, [string]$files){
     cmd /c icacls $drive /grant "Everyone:(OI)(CI)RX" /t
 }
 
-$example_diskpart = 'c:\diskpart.txt'
-$example_drive = 'f:\'
-$example_files = 'c:\new folder\'
+$example_diskpart = 'C:\diskpart.txt'
+$example_drive = 'F:\'
+$example_files = 'C:\new folder\'
 
 format-disk $example_diskpart $example_drive $example_files
