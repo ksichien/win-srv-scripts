@@ -13,6 +13,7 @@ This is a small collection of PowerShell scripts I've written to make life easie
     - create-local-user
     - create-scheduled-task
     - create-vm
+    - format-disk
 - sql:
     - sql-backup
 - wsus:
